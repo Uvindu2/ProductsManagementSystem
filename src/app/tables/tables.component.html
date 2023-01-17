@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Customer List</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select NIC</mat-label>
+                            <mat-select name="nicf" [formControl]="nicf">
+                              <mat-option *ngFor="let data of myData.existingCustomer"  [value]="data.nic" >
+                            {{data.nic}}
+                              </mat-option>
+                            </mat-select> 
+                          </mat-form-field>
+
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of myData.existingCustomer">
+                                        <td>{{data.firstName}}</td>
+                                        <td>{{data.lastName}}</td>
+                                        <td>{{data.address}}</td>
+                                        <td>{{data.nic}}</td>
+                                        <td>{{data.telephone}}</td>
+                                        <td>{{data.email}}</td>
+                                        <td>
+                                            <a class="btn btn-warning" href='#/customer/update/{{data._id}}'>&nbsp;Edit</a>
+                                                &nbsp;
+                                                <a class="btn btn-danger" (click)="deleteCustomer(data._id)" >Delete</a>
+                                        </td> 
+                                    </tr>
+                                </tbody>
+                          </table>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
